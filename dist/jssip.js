@@ -23751,6 +23751,9 @@ module.exports = /*#__PURE__*/function (_EventEmitter) {
     key: "get",
     value: function get(parameter) {
       switch (parameter) {
+        case 'authorization_user':
+          return this._configuration.authorization_user;
+
         case 'realm':
           return this._configuration.realm;
 
@@ -23771,6 +23774,12 @@ module.exports = /*#__PURE__*/function (_EventEmitter) {
     key: "set",
     value: function set(parameter, value) {
       switch (parameter) {
+        case 'authorization_user':
+          {
+            this._configuration.authorization_user = String(value);
+            break;
+          }
+
         case 'password':
           {
             this._configuration.password = String(value);
@@ -24228,7 +24237,7 @@ module.exports = /*#__PURE__*/function (_EventEmitter) {
         }
       }; // Seal the configuration.
 
-      var writable_parameters = ['password', 'realm', 'ha1', 'display_name', 'register'];
+      var writable_parameters = ['password', 'realm', 'ha1', 'display_name', 'register', 'authorization_user'];
 
       for (var parameter in this._configuration) {
         if (Object.prototype.hasOwnProperty.call(this._configuration, parameter)) {
